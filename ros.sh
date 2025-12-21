@@ -68,3 +68,71 @@ Build the code in the workspace
 To build the \jazzy folder tree:
 
 colcon build --merge-install
+
+Note
+
+We’re using --merge-install here to avoid a PATH variable that is too long at the end of the build. If you’re adapting these instructions to build a smaller workspace then you might be able to use the default behavior which is isolated install, i.e. where each package is installed to a different folder.
+
+Note
+
+Source installation can take a long time given the large number of packages being pulled into the workspace.
+
+Setup environment
+Start a new Windows command prompt, which will be used in the examples.
+
+Source the pixi environment
+This is required in every command prompt you open to set up paths to the dependencies:
+
+cd C:\dev
+pixi shell
+Source the ROS 2 environment
+This is required in every command prompt you open to setup the ROS 2 workspace:
+
+call C:\dev\jazzy\install\local_setup.bat
+This will automatically set up the environment for any DDS vendors that support was built for.
+
+It is normal that the previous command, if nothing else went wrong, outputs The system cannot find the path specified. exactly once.
+
+Try some examples
+Note that the first time you run any executable you will have to allow access to the network through a Windows Firewall popup.
+
+You can run the tests using this command:
+
+colcon test --merge-install
+Note
+
+--merge-install should only be used if it was also used in the build step.
+
+Afterwards you can get a summary of the tests using this command:
+
+colcon test-result
+To run the examples, first open a clean new cmd.exe and set up the workspace by sourcing the local_setup.bat file. Then, run a C++ talker:
+
+call install\local_setup.bat
+ros2 run demo_nodes_cpp talker
+In a separate command prompt you can do the same, but instead run a Python listener:
+
+call install\local_setup.bat
+ros2 run demo_nodes_py listener
+You should see the talker saying that it’s Publishing messages and the listener saying I heard those messages. This verifies both the C++ and Python APIs are working properly. Hooray!
+
+Note
+
+It is not recommended to build in the same cmd prompt that you’ve sourced the local_setup.bat.
+
+Next steps
+Continue with the tutorials and demos to configure your environment, create your own workspace and packages, and learn ROS 2 core concepts.
+
+Stay up to date
+See Maintain source checkout to periodically refresh your source installation.
+
+Troubleshoot
+Troubleshooting techniques can be found here.
+
+Uninstall
+If you installed your workspace with colcon as instructed above, “uninstalling” could be just a matter of opening a new terminal and not sourcing the workspace’s setup file. This way, your environment will behave as though there is no Jazzy install on your system.
+
+If you’re also trying to free up space, you can delete the entire workspace directory with:
+
+rmdir /s /q C:\dev\jazzy
+
