@@ -12,7 +12,7 @@ Simulation & Visualization: Tools like Gazebo (physics-based simulation) and RVi
 
 
 what are differences between fast dds and rms
-In the context of ROS 2, "Fast DDS" and "RMW" refer to different layers of the communication system. There is no standard robotic term "RMS" in this context; it is likely a typo for RMW (ROS Middleware).
+In the context of ROS 2, "Fast DDS" and "RMW" refer to different layers of the communication system. RMW (ROS Middleware)
 The relationship between them is that Fast DDS is a specific communication software, while RMW is the interface that connects that software to ROS 2. 
 Key Differences
 Feature 	RMW (ROS Middleware Interface)	Fast DDS (by eProsima)
