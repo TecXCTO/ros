@@ -48,3 +48,84 @@ rmdir /s /q C:\pixi_ws
 
 
 pixi shell
+
+
+To ensure Pixi installs its global data and package cache on the D: drive instead of the C: drive, you need to set specific environment variables before running any commands. By default, Pixi uses %UserProfile%\.pixi and %LOCALAPPDATA%\rattler for these files. 
+Step 1: Set Environment Variables
+Open a PowerShell terminal and run these commands to redirect Pixi's storage folders to the D: drive for the current session:
+powershell
+# Set Pixi's home folder (for global environments/configs) to D:
+$env:PIXI_HOME = "D:\.pixi"
+
+# Set Pixi's global package cache to D:
+$env:PIXI_CACHE_DIR = "D:\pixi_cache"
+Use code with caution.
+
+[Note: You can permanently set these in Windows System Properties > Environment Variables to avoid re-typing them.] 
+Step 2: Download and Initialize in D:
+Now, proceed with your commands within the desired directory on the D: drive.
+powershell
+# Switch to D: drive and enter your workspace
+D:
+cd \pixi_ws
+
+# Download the manifest
+irm raw.githubusercontent.com -OutFile pixi.toml
+
+# Install dependencies (they will now go to D:\pixi_cache and D:\pixi_ws\.pixi)
+pixi install
+Use code with caution.
+
+Why this works:
+PIXI_HOME: Controls where the standalone pixi binary and global environments are stored.
+PIXI_CACHE_DIR: Controls where the large downloaded package binaries are cached globally.
+Project-Local Files: By running these commands inside D:\pixi_ws, the project-specific environment (the .pixi folder) will naturally be created on the D: drive within that workspace folder. 
+
+
+
+
+
+To "uninstall" a ROS 2 Kilted workspace managed by Pixi on Windows and free up space, you can use the following methods:
+1. Remove Environment Files (Save Config)
+If you want to keep your project configuration (pixi.toml) but delete the large installed dependencies and environment files:
+Command: Run pixi clean from within the D:\pixi_ws directory.
+Manual Alternative: Delete the hidden .pixi folder inside your workspace:
+rmdir /s /q D:\pixi_ws\.pixi. 
+2. Complete Workspace Removal
+To completely delete the entire workspace and all downloaded files (including the pixi.toml you just downloaded):
+Command: Navigate out of the directory and delete it entirely:
+cd ..
+rmdir /s /q D:\pixi_ws. 
+3. Clear Global Cache
+Pixi stores downloaded packages in a shared global cache. To free up space taken by these cached binaries:
+Command: pixi clean cache.
+To only remove unused cached items: pixi clean cache --unused. 
+Summary of Commands
+Action 	Command
+Remove local environment	pixi clean
+Delete entire workspace	rmdir /s /q D:\pixi_ws
+Clear global package cache	pixi clean cache
+Uninstall Pixi itself	Delete the ~/.pixi directory (typically in your user home folder).
+
+
+
+
+
+To "uninstall" a colcon workspace and free up disk space, you can delete the entire workspace directory from your system. 
+Uninstalling and Freeing Space
+Remove Workspace Directories: To free up space, delete the directory where you built the workspace. For a standard ROS 2 source installation, use the command:
+rm -rf ~/ros2_kilted (or the specific name of your workspace, such as ~/ros2_ws).
+Clean Specific Build Artifacts: If you want to keep the source code but free up space consumed by the build process, you can delete only the generated folders:
+rm -rf build/ install/ log/.
+Use colcon-clean: If installed, you can use the colcon-clean extension to safely manage and remove build, install, and log paths:
+colcon clean workspace. 
+Removing Environment References
+Check Shell Startup Scripts: If you added a line to your .bashrc, .zshrc, or other shell startup scripts to automatically source the workspace, you must remove that line.
+Example: Open the file with a text editor like gedit ~/.bashrc and delete the line source ~/ros2_ws/install/setup.bash.
+Restart Terminals: Simply closing your current terminal and opening a new one ensures the workspace is no longer sourced in your environment. 
+
+
+
+
+
+
