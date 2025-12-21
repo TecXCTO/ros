@@ -125,6 +125,22 @@ Example: Open the file with a text editor like gedit ~/.bashrc and delete the li
 Restart Terminals: Simply closing your current terminal and opening a new one ensures the workspace is no longer sourced in your environment. 
 
 
+Quick Demo#
+Project setup is a breeze with Pixi.
+
+
+pixi init hello-world
+cd hello-world
+pixi add python
+pixi run python -c 'print("Hello World!")'
+Pixi Demo
+
+Install your favorite tools with a single command.
+
+
+pixi global install gh nvim ipython btop ripgrep
+Pixi Global Demo
+
 
 
 
