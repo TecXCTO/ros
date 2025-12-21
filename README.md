@@ -1,6 +1,6 @@
 # <b> ROS
 
-#"ROS" most commonly refers to the Robot Operating System, an open-source framework and collection of software tools used to build complex robot applications.
+# "ROS" most commonly refers to the Robot Operating System, an open-source framework and collection of software tools used to build complex robot applications.
 
 1. Robot Operating System (Robotics)
 Despite its name, ROS is not a traditional operating system (like Windows) but rather a middleware or SDK that sits on top of an OS (usually Linux) to manage hardware and software communication. 
