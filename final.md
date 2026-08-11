@@ -36,3 +36,38 @@ source /opt/ros/humble/setup.bash
 
 Run Step 1 first to unlock the default talker and listener nodes. Does the package download complete smoothly without any errors?
 
+
+The error bash: !/usr/bin/env: event not found happens because of the exclamation mark (!) inside the double quotes. In a standard Linux terminal, double quotes tell the shell to treat ! as a history expansion command instead of normal text.
+We can completely fix this error by switching to single quotes ('), which tells the terminal to treat the text literally without running any history commands.
+Run these exact commands one by one to fix your file:
+------------------------------
+## Step 1: Force write the clean Python engine header
+Copy and run this command using single quotes:
+
+echo '#!/usr/bin/env python3' > temp.py
+
+(This command will execute instantly and silently, dropping you back to a clean prompt row).
+------------------------------
+## Step 2: Append your existing code and overwrite
+Now append your written code and grant the file execution permissions:
+
+cat simple_publisher.py >> temp.py
+mv temp.py simple_publisher.py
+chmod +x simple_publisher.py
+
+------------------------------
+## Step 3: Source and Run Your Python Node
+Now activate your environment variables and launch your custom script:
+
+source /opt/ros/humble/setup.bash
+./simple_publisher.py
+
+------------------------------
+## 🧪 Test the Demo Talker and Listener nodes too!
+Since your demo packages from the previous step finished downloading perfectly, you can open a parallel terminal tab anytime and test the official examples:
+
+* Terminal Tab 1: ros2 run demo_nodes_cpp talker
+* Terminal Tab 2: ros2 run demo_nodes_py listener
+
+Run Step 1 right now to clear out that history expansion block. Does your custom script successfully begin publishing greetings to your screen?
+
