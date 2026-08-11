@@ -10,6 +10,7 @@ tecx/
     ├── __init__.py
     └── your_script.py      # Your actual Python code
 ```
+```
 
 # 1. Create a structured workspace folder tree layout
 mkdir -p ~/dev_ws/src
@@ -31,3 +32,4 @@ source install/setup.bash
 
 # 5. Run your node using the executable terminal link name we set inside setup.py!
 ros2 run my_robot_package talker_node
+```
