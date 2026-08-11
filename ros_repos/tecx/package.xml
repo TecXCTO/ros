@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?model_view_type ros2_package?>
 <package format="3">
-  <name>my_robot_package</name>
+  <name>tecx</name>
   <version>0.0.1</version>
   <description>Custom ROS 2 Python package running on Android Termux</description>
   <maintainer email="your_email@example.com">Your Name</maintainer>
