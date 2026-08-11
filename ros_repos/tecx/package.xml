@@ -4,7 +4,7 @@
   <name>tecx</name>
   <version>0.0.1</version>
   <description>Custom ROS 2 Python package running on Android Termux</description>
-  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <maintainer email="cto@tecx.ai">Rahul Saini</maintainer>
   <license>Apache-2.0</license>
 
   <depend>rclpy</depend>
