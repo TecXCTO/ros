@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'my_robot_package'
+package_name = 'tecx'
 
 setup(
     name=package_name,
@@ -13,15 +13,15 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='Your Name',
-    maintainer_email='your_email@example.com',
+    maintainer='Rahul Saini',
+    maintainer_email='cto@tecx.ai',
     description='Custom ROS 2 Python package running on Android Termux',
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
             # format: 'executable_name = package_name.file_name:main_function'
-            'talker_node = my_robot_package.your_script:main'
+            'talker_node = tecx.tecx_edge:main'
         ],
     },
 )
