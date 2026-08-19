@@ -1,14 +1,18 @@
 # <b> ROS
 
-# "ROS" most commonly refers to the Robot Operating System, an open-source framework and collection of software tools used to build complex robot applications.
+# "ROS" 
+most commonly refers to the Robot Operating System, an open-source framework and collection of software tools used to build complex robot applications.
 
 # 1. Robot Operating System (Robotics)
 # Despite its name, ROS is not a traditional operating system (like Windows) but rather a middleware or SDK that sits on top of an OS (usually Linux) to manage hardware and software communication. 
-# Communication: ROS uses a "node" system where individual programs (nodes) communicate via "topics" (publish/subscribe) or "services" (request/response).
+# Communication:
+ROS uses a "node" system where individual programs (nodes) communicate via "topics" (publish/subscribe) or "services" (request/response).
 Hardware Abstraction: It provides drivers and interfaces that allow developers to write code for a robot without needing to know the specific details of its sensors or motors.
-# Common Packages: It features thousands of ready-to-use packages for standard tasks like navigation (SLAM), motion planning (MoveIt), and perception (OpenCV).
+# Common Packages:
+It features thousands of ready-to-use packages for standard tasks like navigation (SLAM), motion planning (MoveIt), and perception (OpenCV).
 Simulation & Visualization: Tools like Gazebo (physics-based simulation) and RViz (3D visualization) allow developers to test robots virtually before deploying them on physical hardware.
-# Industry Standards: ROS 2 is the modern version designed for production environments, offering enhanced security, real-time performance, and multi-robot support. 
+# Industry Standards:
+ROS 2 is the modern version designed for production environments, offering enhanced security, real-time performance, and multi-robot support. 
 
 
 what are differences between fast dds and rms
@@ -28,17 +32,15 @@ Performance: Fast DDS is often chosen as the default RMW because it offers high 
 Note: If you actually meant RMS (as in Root Mean Square), that is a mathematical calculation used in robotics to measure the average magnitude of varying signals, such as sensor noise or motor vibration.
 This overview contrasts the ROS 2 middleware interface (RMW) with the Fast DDS communication protocol:
 
+In the context of the Robot Operating System (ROS), the full form of RMW is ROS Middleware. 
+ROS Middleware (RMW) in ROS 2
+In ROS 2, the RMW is an abstraction layer that allows the system to support multiple underlying communication mechanisms, typically based on the DDS (Data Distribution Service) standard. 
+# Purpose:
+It decouples the core ROS 2 application code from specific middleware implementations. This allows developers to swap between different vendors (like Fast DDS, Cyclone DDS, or Zenoh) without rewriting their application.
+# Function:
+It defines a set of standard C APIs for common tasks like node discovery, message passing (publish/subscribe), and service calls. 
 
-
-
-
-# In the context of the Robot Operating System (ROS), the full form of RMW is ROS Middleware. 
-# ROS Middleware (RMW) in ROS 2
-# In ROS 2, the RMW is an abstraction layer that allows the system to support multiple underlying communication mechanisms, typically based on the DDS (Data Distribution Service) standard. 
-# Purpose: It decouples the core ROS 2 application code from specific middleware implementations. This allows developers to swap between different vendors (like Fast DDS, Cyclone DDS, or Zenoh) without rewriting their application.
-# Function: It defines a set of standard C APIs for common tasks like node discovery, message passing (publish/subscribe), and service calls. 
-
-
+```
 
 # ros
 
@@ -91,7 +93,7 @@ rmdir /s /q C:\pixi_ws
 
 pixi shell
 
-
+```
 To ensure Pixi installs its global data and package cache on the D: drive instead of the C: drive, you need to set specific environment variables before running any commands. By default, Pixi uses %UserProfile%\.pixi and %LOCALAPPDATA%\rattler for these files. 
 Step 1: Set Environment Variables
 Open a PowerShell terminal and run these commands to redirect Pixi's storage folders to the D: drive for the current session:
